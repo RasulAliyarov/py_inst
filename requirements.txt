@@ -39,4 +39,3 @@ vine==5.0.0
 wcwidth==0.2.6
 webdriver-manager==3.8.5
 wsproto==1.2.0
-Cactus==3.3.3
