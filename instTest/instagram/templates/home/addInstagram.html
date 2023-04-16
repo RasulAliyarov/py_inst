@@ -1,0 +1,25 @@
+{% extends 'home/base.html' %}
+
+
+{% block title%}
+Add Instagram
+{% endblock %}
+
+
+{% block content%}
+<div class="addInstagram">
+    <h1 class="addInstagram__title">Add Instagram</h1>
+    {{load}}
+    <form method="post" class="tab-content__form">
+        {% csrf_token %}
+        <input type="text" placeholder="Username" name="username">
+        <input type="password" placeholder="Password" name="password">
+        <button class="addBtn" type="submit">Add</button><span style="
+        color: red;
+        font-size: 18px;
+        margin-top: 6px;
+        font-weight: 600;" class="erorr2"> {{error}}</span>
+    </form>
+    
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="stylesheet" href="../../static/css/instagram.css">
+    <link rel="icon" href="../../static/img/Icon.png">
+</head>
+
+<body class="authBody">
+    <div class="login wrapper">
+        <div class="tabs">
+            <div class="tab">
+                <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+                <label for="tab-1" class="tab-label">Login</label>
+
+                <div class="tab-content">
+                    <img src="../../static/img/InstLogo.svg" alt="" class="instagramLogoAuth">
+
+                    <form method="post" class="tab-content__form">
+                        {% csrf_token %}
+                        <label for="Username">Username</label>
+                        <input type="text" id="Username" placeholder="Username" name="username">
+                        <label for="Password">Password</label>
+                        <input type="password" id="Password" placeholder="Password" name="password">
+                        <span class="error">{{notFind}}</span>
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+            <div class="tab">
+                <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
+                <label for="tab-2" class="tab-label">Registration</label>
+
+                <div class="tab-content">
+                    <img src="../../static/img/InstLogo.svg" alt="" class="instagramLogoAuth">
+
+                    <form method="post" class="tab-content__form">
+                        {% csrf_token %}
+                        <label for="Email">E-mail</label>
+                        <input type="text" id="E-mail" placeholder="E-mail" name="email">
+                        <label for="RegUsername">Username</label>
+                        <input type="text" id="RegUsername" placeholder="Username" name="username">
+                        <label for="RegPassword">Password</label>
+                        <input type="password" id="RegPassword" placeholder="Password" name="password"> 
+                        <label for="RegConfirm">Confirm Password <span class="error">{{error}}</span></label>
+                        <input type="password" id="RegConfirm" placeholder="Confirm Password" name="confirmpassword"> 
+                        <button type="submit">Registartion</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
