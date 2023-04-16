@@ -1,6 +1,4 @@
 from pathlib import Path
-from celery.schedules import crontab
-from datetime import datetime
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -98,7 +96,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Baku'
 
 USE_I18N = True
 
@@ -133,32 +131,11 @@ CACHES = {
 CELERY_CACHE_BACKEND = 'default'
 CELERY_TASK_TIME_LIMIT = 5 
 
-# CELERY_BEAT_SHEDULER = 
 
-# CELERY_BEAT_SCHEDULE = { # scheduler configuration 
-#     '--scheduler django_celery_beat.schedulers:DatabaseScheduler'
-    
-#     'Task_one_schedule' : {  # whatever the name you want 
-#         'task': 'test_app.tasks.task_one', # name of task with path
-#         'schedule': crontab(), # crontab() runs the tasks every minute
-#     },
-#     'Task_two_schedule' : {  # whatever the name you want 
-#         'task': 'test_app.tasks.task_two', # name of task with path
-#         'schedule': 30, # 30 runs this task every 30 seconds
-#         'args' : {datetime.now()} # arguments for the task
-#     },
-# }
-
-CELERY_BEAT_SCHEDULE = { # scheduler configuration 
+CELERY_BEAT_SCHEDULE = { 
     '--scheduler django_celery_beat.schedulers:DatabaseScheduler'
-
-    'instStat' : {  # whatever the name you want 
-        'task': 'instagram.tasks.instStat', # name of task with path
-        'schedule': 600, # crontab() runs the tasks every minute
+    'instStat' : {  
+        'task': 'instagram.tasks.instStat', 
+        'schedule': 600, 
     },
 }
-
-
-
-
-# CSRF_TRUSTED_ORIGINS = 

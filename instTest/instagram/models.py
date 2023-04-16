@@ -8,3 +8,10 @@ class Stats(models.Model):
     def __str__(self) :
         return self.name
 # class Users 
+
+class Rekvizit(models.Model):
+    login = models.CharField("Login", max_length=255)
+    password = models.CharField("Password", max_length=255)
+
+    def __str__(self) :
+        return self.login

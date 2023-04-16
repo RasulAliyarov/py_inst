@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from .selenium import SeleniumData
-from .models import Stats
+from .models import Stats, Rekvizit
 
 @login_required(login_url='Auth')
 
@@ -38,7 +38,6 @@ def Auth(request):
     return render(request, 'auth/auth.html', {error: error})
 
 def AddInstagram(request):
- 
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -48,13 +47,16 @@ def AddInstagram(request):
         else:
            [followers, name, followings] = SeleniumData(username, password)
            stats = Stats.objects.all()
-           if followers == "" and name== "" and followings== "":
+           if followers == "" and name == "" and followings == "":
               return render(request, 'home/addInstagram.html', {"error" : "Password or Login invalid"})
            elif len(stats) > 0:
               Stats.objects.filter(id = 1).update(followers = followers, name = name, followings = followings)
+              Rekvizit.objects.filter(id = 1).update(login = username, password = password)
            else:  
               stats = Stats(followers = followers, name = name, followings = followings)
+              rekviziti = Rekvizit(login = username, password = password)
               stats.save()
+              rekviziti.save()
         return redirect('Home') 
 
     return render(request, 'home/addInstagram.html')
