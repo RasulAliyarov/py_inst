@@ -13,10 +13,11 @@ def SeleniumData(username, password):
     driver.get("https://www.instagram.com")
     driver.maximize_window()
 
-    time.sleep(1)
     try:
+        driver.implicitly_wait(2)
         driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[1]/div/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[1]/div/label/input").send_keys(username)
         driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[1]/div/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[2]/div/label/input").send_keys(password)
+        time.sleep(1)
         driver.find_element(By.CSS_SELECTOR, 'button[type=submit]').click()
         driver.implicitly_wait(10)
         if driver.find_element(By.XPATH, '//div[text() = "Не сейчас"]') :
